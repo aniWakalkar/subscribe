@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subscribers</title>
+  <script>
+    async function fetchSubscribers() {
+      try {
+        const response = await fetch('/subscribers');
+        const data = await response.json();
+        document.getElementById('subscribers').innerText = JSON.stringify(data, null, 2);
+      } catch (error) {
+        console.error('Error fetching subscribers:', error);
+      }
+    }
+
+    async function fetchSubscriberNames() {
+      try {
+        const response = await fetch('/subscribers/names');
+        const data = await response.json();
+        document.getElementById('subscribers').innerText = JSON.stringify(data, null, 2);
+      } catch (error) {
+        console.error('Error fetching subscriber names:', error);
+      }
+    }
+
+    async function fetchSubscriberById() {
+      const id = document.getElementById('subscriberId').value;
+      try {
+        const response = await fetch(`/subscribers/${id}`);
+        const data = await response.json();
+        document.getElementById('subscribers').innerText = JSON.stringify(data, null, 2);
+      } catch (error) {
+        console.error('Error fetching subscriber by ID:', error);
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Subscribers</h1>
+  <button onclick="fetchSubscribers()">Get All Subscribers</button>
+  <button onclick="fetchSubscriberNames()">Get Subscriber Names</button>
+  <input type="text" id="subscriberId" placeholder="Enter Subscriber ID">
+  <button onclick="fetchSubscriberById()">Get Subscriber by ID</button>
+  <p id="subscribers"></p>
+</body>
+</html>
