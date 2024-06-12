@@ -1,7 +1,9 @@
 # Subscribers API Documentation
 ## Base URL
 
-`http://localhost:3000`
+`http://localhost:3000/`
+
+`https://subscribe-0cjn.onrender.com/`
 
 ## Endpoints
 
